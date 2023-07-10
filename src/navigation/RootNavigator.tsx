@@ -9,7 +9,7 @@ import EpisodeDetailScreen from '../screens/EpisodeDetailScreen';
 import {RootStackParamList} from './types';
 import colors from '../themes/colors';
 
-const FavoritesScreen = () => (
+const SearchScreen = () => (
   <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
     <Text>Settings!</Text>
   </View>
@@ -32,7 +32,7 @@ const TabNavigator = () => (
       component={SeriesListScreen}
       options={{title: 'Series'}}
     />
-    <Tab.Screen name="Favorites" component={FavoritesScreen} />
+    <Tab.Screen name="Search" component={SearchScreen} />
   </Tab.Navigator>
 );
 
