@@ -56,11 +56,11 @@ const SerieDetailScreen = ({
         <Text style={styles.titleStyle}>{serieData.name}</Text>
         <Text style={styles.ratingText}>{serieData.rating?.average}</Text>
       </View>
-      <Text style={styles.descriptionText}>{`Genres: ${serieData.genres.join(
+      <Text style={styles.descriptionText}>{`Genres: ${serieData.genres?.join(
         ', ',
       )}.`}</Text>
       <Text style={styles.descriptionText}>
-        {`Every ${serieData.schedule.days.join(', ')} at ${
+        {`Every ${serieData.schedule.days?.join(', ')} at ${
           serieData.schedule.time
         }.`}
       </Text>

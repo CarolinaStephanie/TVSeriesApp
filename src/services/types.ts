@@ -18,6 +18,10 @@ export interface ISerie {
   };
 }
 
+export interface ISearch {
+  show: ISerie;
+}
+
 export interface IEpisode {
   id: number;
   number: number;
@@ -29,4 +33,10 @@ export interface IEpisode {
 
 export interface ISeason {
   [seasonNumber: number]: IEpisode[];
+}
+
+export interface SeriesService {
+  loadSeries(pageIndex: number): Promise<ISerie[]>;
+  loadSerieEpisodes(id: number): Promise<IEpisode[]>;
+  searchSeries(title: string): Promise<ISerie[]>;
 }

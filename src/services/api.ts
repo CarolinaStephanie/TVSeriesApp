@@ -1,12 +1,7 @@
 import axios from 'axios';
-import {ISerie, IEpisode} from './types';
+import {ISearch, SeriesService} from './types';
 
 axios.defaults.baseURL = 'https://api.tvmaze.com';
-
-export interface SeriesService {
-  loadSeries(pageIndex: number): Promise<ISerie[]>;
-  loadSerieEpisodes(id: number): Promise<IEpisode[]>;
-}
 
 export const seriesService = (): SeriesService => {
   return {
@@ -17,6 +12,10 @@ export const seriesService = (): SeriesService => {
     loadSerieEpisodes: async (serieId: number) => {
       const response = await axios.get(`/shows/${serieId}/episodes`);
       return response.data;
+    },
+    searchSeries: async (title: string) => {
+      const response = await axios.get(`/search/shows?q=${title}`);
+      return response.data?.map?.(({show}: ISearch) => ({...show}));
     },
   };
 };

@@ -1,7 +1,7 @@
 import {IEpisode, ISerie} from '../services/types';
 
 export type RootStackParamList = {
-  TabNavigator: undefined;
+  SeriesListScreen: undefined;
   SerieDetail: {serieData: ISerie};
   EpisodeDetail: {episodeData: IEpisode};
 };
