@@ -4,7 +4,7 @@ This is an Android application that allows users to browse and search for TV ser
 
 ## Installation
 
-You can download the [apk](https://github.com/CarolinaStephanie/TVSeriesApp/distribution/app-release.apk) available.
+You can download the [apk](https://github.com/CarolinaStephanie/TVSeriesApp/tree/main/distribution) available.
 
 Or you can install the application, following these steps:
 
