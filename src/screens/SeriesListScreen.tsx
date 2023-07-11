@@ -11,9 +11,10 @@ import {
 } from 'react-native';
 import {seriesService} from '../services/api';
 import {ISerie} from '../services/types';
-import colors from '../themes/colors';
+import {colors, fontSizes, normalize, spacing} from '../themes/themes';
 
 import {SeriesListScreenNavigationProp} from './types';
+import {commonStyles} from './commonStyles';
 
 const SeriesListScreen = () => {
   const [seriesData, setSeriesData] = useState<ISerie[]>([]);
@@ -63,7 +64,7 @@ const SeriesListScreen = () => {
               style={styles.image}
             />
           </View>
-          <View style={styles.textView}>
+          <View style={styles.flexView}>
             <Text style={styles.title}>{item.name}</Text>
             <Text style={styles.ratingText}>{item.rating?.average}</Text>
             <Text style={styles.genresText}>{`Genres: ${item.genres?.join(
@@ -76,7 +77,7 @@ const SeriesListScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[commonStyles.mainContainer, styles.flexView]}>
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.input}
@@ -111,43 +112,39 @@ const SeriesListScreen = () => {
 export default SeriesListScreen;
 
 const styles = StyleSheet.create({
-  container: {
+  flexView: {
     flex: 1,
-    backgroundColor: colors.secondary,
   },
   item: {
-    paddingVertical: 15,
-    margin: 15,
+    paddingVertical: spacing.medium,
+    margin: spacing.medium,
     flexDirection: 'row',
     backgroundColor: colors.white,
     shadowColor: colors.primary,
     shadowOffset: {
-      width: 10,
-      height: 10,
+      width: spacing.default,
+      height: spacing.default,
     },
     shadowOpacity: 0.75,
     shadowRadius: 3.8,
     elevation: 5,
   },
   title: {
-    fontSize: 20,
+    fontSize: fontSizes.xl,
     color: colors.primary,
     fontWeight: 'bold',
   },
   ratingText: {
     color: colors.black,
-    fontSize: 17,
+    fontSize: fontSizes.m,
     fontWeight: 'bold',
   },
   image: {
-    height: 130,
-    width: 130,
-  },
-  textView: {
-    flex: 1,
+    height: normalize(130),
+    width: normalize(130),
   },
   genresText: {
-    paddingTop: 10,
+    paddingTop: spacing.default,
     color: colors.secondaryText,
   },
   searchContainer: {
@@ -155,35 +152,35 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'white',
-    height: 50,
-    margin: 20,
-    paddingHorizontal: 20,
+    height: normalize(50),
+    margin: spacing.large,
+    paddingHorizontal: spacing.large,
     borderRadius: 15,
   },
   input: {
     flex: 1,
-    fontSize: 18,
+    fontSize: fontSizes.l,
   },
   searchText: {
-    fontSize: 12,
+    fontSize: fontSizes.xs,
     color: colors.secondaryText,
   },
   emptyListContent: {
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop: 20,
+    paddingTop: spacing.large,
   },
   showAllContent: {
-    paddingBottom: 10,
+    paddingBottom: spacing.default,
     alignItems: 'center',
   },
   showAllText: {
-    paddingVertical: 5,
-    paddingHorizontal: 20,
+    paddingVertical: spacing.small,
+    paddingHorizontal: spacing.large,
     borderWidth: 2,
     borderRadius: 15,
     borderColor: colors.primary,
-    fontSize: 12,
+    fontSize: fontSizes.xs,
     color: colors.secondaryText,
   },
 });

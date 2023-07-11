@@ -10,9 +10,10 @@ import {
 import {RootStackParamList} from '../navigation/types';
 import {StackScreenProps} from '@react-navigation/stack';
 import RenderHtml from 'react-native-render-html';
-import colors from '../themes/colors';
+import {colors, fontSizes, normalize, spacing} from '../themes/themes';
 import {seriesService} from '../services/api';
 import {IEpisode, ISeason} from '../services/types';
+import {commonStyles} from './commonStyles';
 
 const SerieDetailScreen = ({
   navigation,
@@ -44,28 +45,29 @@ const SerieDetailScreen = ({
     navigation.navigate('EpisodeDetail', {episodeData: episode});
 
   return (
-    <ScrollView style={styles.scrollViewStyle}>
+    <ScrollView style={commonStyles.mainContainer}>
       <View>
         <Image
           source={{uri: serieData.image?.original}}
           resizeMode="cover"
-          style={styles.imageBanner}
+          style={commonStyles.imageBanner}
         />
       </View>
       <View style={styles.titleContainerStyle}>
-        <Text style={styles.titleStyle}>{serieData.name}</Text>
+        <Text style={commonStyles.titleStyle}>{serieData.name}</Text>
         <Text style={styles.ratingText}>{serieData.rating?.average}</Text>
       </View>
-      <Text style={styles.descriptionText}>{`Genres: ${serieData.genres?.join(
+      <Text
+        style={commonStyles.descriptionText}>{`Genres: ${serieData.genres?.join(
         ', ',
       )}.`}</Text>
-      <Text style={styles.descriptionText}>
+      <Text style={commonStyles.descriptionText}>
         {`Every ${serieData.schedule.days?.join(', ')} at ${
           serieData.schedule.time
         }.`}
       </Text>
       <RenderHtml
-        tagsStyles={{p: styles.pStyle}}
+        tagsStyles={{p: commonStyles.pStyle}}
         source={{html: serieData.summary}}
       />
 
@@ -90,42 +92,25 @@ const SerieDetailScreen = ({
 export default SerieDetailScreen;
 
 const styles = StyleSheet.create({
-  scrollViewStyle: {
-    backgroundColor: colors.secondary,
-  },
-  imageBanner: {
-    width: '100%',
-    height: 200,
-  },
   titleContainerStyle: {
     flexDirection: 'row',
     alignItems: 'center',
   },
-  titleStyle: {
-    padding: 10,
-    fontSize: 25,
-    color: colors.primary,
-    fontWeight: 'bold',
-  },
-  descriptionText: {
-    padding: 10,
-  },
   ratingText: {
-    fontSize: 25,
+    fontSize: fontSizes.xxl,
   },
-  pStyle: {textAlign: 'justify', padding: 10},
   episodeList: {
-    padding: 10,
+    padding: spacing.default,
   },
   seasonText: {
-    fontSize: 20,
+    fontSize: fontSizes.xl,
     color: colors.primary,
     fontWeight: 'bold',
   },
   episodeText: {
-    paddingHorizontal: 10,
-    paddingVertical: 15,
-    fontSize: 15,
+    paddingHorizontal: spacing.default,
+    paddingVertical: fontSizes.m,
+    fontSize: fontSizes.m,
     color: colors.secondaryText,
   },
 });

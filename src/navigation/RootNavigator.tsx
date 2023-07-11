@@ -6,7 +6,7 @@ import SeriesListScreen from '../screens/SeriesListScreen';
 import SerieDetailScreen from '../screens/SerieDetailScreen';
 import EpisodeDetailScreen from '../screens/EpisodeDetailScreen';
 import {RootStackParamList} from './types';
-import colors from '../themes/colors';
+import {colors, fontSizes, normalize} from '../themes/themes';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
@@ -47,7 +47,7 @@ export default function App() {
 const styles = StyleSheet.create({
   tabStyle: {
     flexDirection: 'row',
-    height: 60,
+    height: normalize(60),
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: colors.primary,
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     backgroundColor: colors.primary,
   },
   headerTitleStyle: {
-    fontSize: 20,
+    fontSize: fontSizes.xl,
   },
-  tabBarLabelStyle: {fontSize: 18},
+  tabBarLabelStyle: {fontSize: fontSizes.l},
 });
