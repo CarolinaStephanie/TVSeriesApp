@@ -15,4 +15,3 @@ Or you can install the application, following these steps:
 ```bash
 npx react-native run-android
 ```
-![](https://github.com/CarolinaStephanie/TVSeriesApp/blob/main/distribution/app.gif)
